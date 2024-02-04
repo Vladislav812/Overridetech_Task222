@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>CarPage</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Manufacturing Year</th>
+        <th>Model</th>
+        <th>Vendor</th>
+    </tr>
+    </thead>
+    <tbody th:each="car : ${cars}">
+    <tr>
+        <td th:text="${car.getId()}"></td>
+        <td th:text="${car.getManufacturingYear()}"></td>
+        <td th:text="${car.getModel()}"></td>
+        <td th:text="${car.getVendor()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
