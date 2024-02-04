@@ -1,8 +1,5 @@
 package com.example.Overridetech;
 
-import com.example.Overridetech.model.Car;
-import com.example.Overridetech.repository.CarRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

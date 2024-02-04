@@ -1,4 +1,4 @@
-package com.example.Overridetech.controller;
+package com.example.Overridetech.exception;
 
 public class IncorrectSortingParameterException extends RuntimeException {
     private String parameter;

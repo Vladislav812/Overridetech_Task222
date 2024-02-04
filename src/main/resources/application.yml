@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driverClassName: 'org.postgresql.Driver'
+    url: 'jdbc:postgresql://localhost:5433/OverridetechCars'
+    username: 'postgres'
+    password: 'admin'
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+
+maxCar:
+  4
+sortingOffAttribute:
+  model
