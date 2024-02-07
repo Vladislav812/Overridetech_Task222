@@ -9,7 +9,8 @@ spring:
       ddl-auto: update
       show-sql: true
 
-maxCar:
-  4
-sortingOffAttribute:
-  model
+cars:
+  maxCar:
+    4
+  sortingOffAttribute:
+    model

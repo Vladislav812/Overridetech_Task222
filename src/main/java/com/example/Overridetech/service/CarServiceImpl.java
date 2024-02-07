@@ -2,9 +2,10 @@ package com.example.Overridetech.service;
 
 import com.example.Overridetech.exception.IncorrectSortingParameterException;
 import com.example.Overridetech.model.Car;
+import com.example.Overridetech.properties.CarApplicationProperties;
 import com.example.Overridetech.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,31 +16,23 @@ import java.util.List;
 
 @Service
 @ControllerAdvice
-@ConfigurationProperties()
+@EnableConfigurationProperties
 public class CarServiceImpl implements CarService {
     @Autowired
     private CarRepository carRepository;
-    private int maxCar;
-    private String sortingOffAttribute;
-
-    public void setMaxCar(int maxCar) {
-        this.maxCar = maxCar;
-    }
-
-    public void setSortingOffAttribute(String sortingOffAttribute) {
-        this.sortingOffAttribute = sortingOffAttribute;
-    }
+    @Autowired
+    CarApplicationProperties carApplicationProperties;
 
     @Override
     public List<Car> getCarsList(Integer count, String sortBy) {
-        if (sortingOffAttribute.equals(sortBy)) {
+        if (carApplicationProperties.getSortingOffAttribute().equals(sortBy)) {
             throw new IncorrectSortingParameterException(sortBy);
         }
 
         if (count != null) {
-            return sortBy == null || sortBy.isEmpty() ? (count >= maxCar ?
+            return sortBy == null || sortBy.isEmpty() ? (count >= carApplicationProperties.getMaxCar() ?
                     carRepository.fetchAll() : carRepository.fetchByQuantity(count)) :
-                    (count >= maxCar ?
+                    (count >= carApplicationProperties.getMaxCar() ?
                             carRepository.fetchAndSort(sortBy) : carRepository.fetchByQuantityAndSort(sortBy, count));
 
         }
