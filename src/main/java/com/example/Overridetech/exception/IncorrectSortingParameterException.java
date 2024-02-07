@@ -1,17 +1,17 @@
 package com.example.Overridetech.exception;
 
 public class IncorrectSortingParameterException extends RuntimeException {
-    private String parameter;
+    private String message;
 
-    public IncorrectSortingParameterException(String parameter) {
-        this.parameter = parameter;
+    public IncorrectSortingParameterException(String message) {
+        this.message = message;
     }
 
-    public String getParameter() {
-        return parameter;
+    public String getMessage() {
+        return message;
     }
 
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
